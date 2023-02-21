@@ -1,0 +1,10 @@
+@import './base/reset';
+@import './base/typography';
+@import './abstracts/variables';
+@import './common/utilities';
+
+
+body{
+    background: $bg-color;
+    color: $primary-font-color;
+}
