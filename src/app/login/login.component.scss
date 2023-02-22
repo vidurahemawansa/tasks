@@ -1,0 +1,11 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+:host {
+    display: flex;
+    height: 100vh;
+    @media screen and (min-width: $tablet) {
+        justify-content: center;
+        align-items: center;
+    }
+}
