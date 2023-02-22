@@ -1,0 +1,28 @@
+<div class="add-container">
+    <h4>Add a task</h4>
+    <div class="form-container">
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill" class="form-group">
+                <input type="text" matInput class="form-control" formControlName="name" placeholder="Add task name">
+                <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <div *ngIf="name.errors?.['required']">Task name is required</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-group">
+                <input type="email" matInput class="form-control" formControlName="owner" placeholder="Add task owner">
+                <mat-error *ngIf="owner.invalid && (owner.dirty || owner.touched)">
+                    <div *ngIf="owner.errors?.['required']">Task owner is required</div>
+                    <div *ngIf="!owner.errors?.['required'] && owner.errors?.['emailValidator']">Please enter a valid email</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-group">
+                <textarea matInput class="form-control" formControlName="description" placeholder="Add description"></textarea>
+            </mat-form-field>
+
+            <button type="submit" class="btn btn-primary">Add task</button>
+            <mat-error *ngIf="isDuplicated">This task already exists in our list.</mat-error>
+        </form>
+    </div>
+</div>

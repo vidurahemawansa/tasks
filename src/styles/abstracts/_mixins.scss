@@ -3,6 +3,7 @@
 @mixin border-box($border-radius: '') {
     border-radius: $border-radius;
     padding: 16px;
+    border: 1px solid #ededed;
 }
 
 @mixin btn-style($border-radius: '', $border-width: '', $border-color: '', $bg-color: '') {

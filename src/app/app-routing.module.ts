@@ -8,16 +8,12 @@ const routes: Routes = [
     path: '',
     component: LoginComponent
   },
-  {
-    path: 'task-manager/task-add',
-    loadChildren: () => import('./task-manager/task-add/task-add.module').then(m => m.TaskAddModule),
+  { 
+    path: 'task-manager', 
+    loadChildren: () => import('./task-manager/task-manager.module').then(m => m.TaskManagerModule),
     canActivate: [AuthGuard]
-  },
-  {
-    path: 'task-manager/task-list',
-    loadChildren: () => import('./task-manager/task-list/task-list.module').then(m => m.TaskListModule),
-    canActivate: [AuthGuard]
-  }
+   },
+
 ];
 
 @NgModule({

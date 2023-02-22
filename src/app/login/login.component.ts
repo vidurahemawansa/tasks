@@ -23,7 +23,7 @@ export class LoginComponent {
     this.auth.isAuthenticated$.subscribe({
       next: (isAuthenticated) => {
         this.isAuthenticated = isAuthenticated;
-        this.router.navigate(['/task-manager/task-list']);
+        this.router.navigate(['/task-manager']);
       },
       error: (msg) => {
         console.error('Cannot authenticate')

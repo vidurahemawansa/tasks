@@ -1,10 +1,23 @@
+@import '../../node_modules/font-awesome/scss/font-awesome';
 @import './base/reset';
 @import './base/typography';
 @import './abstracts/variables';
+@import './abstracts/mixins';
 @import './common/utilities';
 
 
 body{
     background: $bg-color;
     color: $primary-font-color;
+
+    h1, h2, h3, h4 {
+        color: $title-font-color;
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        &.btn-primary {
+            @include btn-style(4px, 0, $secondary-bg-color, $secondary-bg-color);
+        }
+    }
 }

@@ -3,14 +3,5 @@
         <img src="../../assets/images/logo.svg" alt="Favorite medium logo" />
         <h3>Login</h3>
     </div>
-
-    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-        <button (click)="auth.logout()" class="btn btn-primary">
-            Log out
-        </button>
-    </ng-container>
-
-    <ng-template #loggedOut>
-        <button class="btn btn-primary" (click)="auth.loginWithRedirect()">Log in</button>
-    </ng-template>
+    <button class="btn btn-primary" (click)="auth.loginWithRedirect()">Log in</button>
 </div>
