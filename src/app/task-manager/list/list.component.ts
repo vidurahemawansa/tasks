@@ -19,6 +19,7 @@ export class ListComponent {
 
   ngOnInit(): void {
     this.tasksList = JSON.parse(localStorage.getItem('task list') || '[]');
+    console.log(this.tasksList);
   }
 
   openAddModal() {

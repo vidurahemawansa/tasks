@@ -1,7 +1,7 @@
 <div class="add-container">
     <h4>Add a task</h4>
     <div class="form-container">
-        <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="addForm">
             <mat-form-field appearance="fill" class="form-group">
                 <input type="text" matInput class="form-control" formControlName="name" placeholder="Add task name">
                 <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
@@ -21,7 +21,11 @@
                 <textarea matInput class="form-control" formControlName="description" placeholder="Add description"></textarea>
             </mat-form-field>
 
-            <button type="submit" class="btn btn-primary">Add task</button>
+            <div class="button-wrapper">
+                <button type="button" class="btn btn-secondory" (click)="closeModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add task</button>
+            </div>
+            
             <mat-error *ngIf="isDuplicated">This task already exists in our list.</mat-error>
         </form>
     </div>

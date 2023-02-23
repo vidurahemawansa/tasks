@@ -1,3 +1,12 @@
 <div class="list-container">
+    <div class="result-container" *ngIf="tasksList && tasksList.length > 0; else noResult">
+        <h4>Allocated tasks</h4>
+    </div>
+
+    <ng-template #noResult>
+        <div class="empty-result-container">
+            <fa-icon [icon]="['fas','circle-info']"></fa-icon>
+        </div>
+    </ng-template>
     <button (click)="openAddModal()">Add</button>
 </div>

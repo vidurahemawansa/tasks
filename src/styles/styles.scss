@@ -16,8 +16,15 @@ body{
     }
 
     .btn {
+        &:hover {
+            opacity: 0.9;
+        }
         &.btn-primary {
             @include btn-style(4px, 0, $secondary-bg-color, $secondary-bg-color);
+        }
+        &.btn-secondory {
+            @include btn-style(4px, 1px, $secondary-bg-color, #fff);
+            color: $secondary-bg-color;
         }
     }
 }

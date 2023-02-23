@@ -3,22 +3,34 @@
 
 .add-container {
     @include border-box(6px);
-    margin: 12px 0 0;
+    border: 0;
+
     h4 {
         margin: 0 0 16px;
         color: $primary-font-color;
         font-weight: 600;
         font-size: 0.9rem;
     }
+
     .form-container {
         form {
             display: flex;
             flex-direction: column;
+
             .form-group {
                 margin: 0 0 32px;
             }
+
             mat-error {
                 color: #ff0000;
+            }
+        }
+
+        .button-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            .btn-secondory {
+                margin: 0 16px 0 0;
             }
         }
     }

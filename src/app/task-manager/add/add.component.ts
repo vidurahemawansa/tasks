@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Task } from '../../shared/interfaces/task.interface';
-import {emailValidator} from '../../shared/directives/email-validator.directive';
-import {TaskManagementService} from '../../shared/services/task.management.service';
+import { emailValidator } from '../../shared/directives/email-validator.directive';
+import { TaskManagementService } from '../../shared/services/task.management.service';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add',
@@ -16,27 +17,14 @@ export class AddComponent {
 
   constructor(
     private fb: FormBuilder,
-    private taskManagementService: TaskManagementService
-    ) 
-    {
+    private taskManagementService: TaskManagementService,
+    private activeModalRef: NgbActiveModal
+  ) {
     this.task = {} as Task;
-   }
+  }
 
   ngOnInit(): void {
-    this.addForm = new FormGroup({
-      name: new FormControl(this.task.name, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
-      owner: new FormControl(this.task.owner, [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-        emailValidator(),
-      ]),
-      description: new FormControl(this.task.description, []),
-    });
+    this.validateForm();
   }
 
   get name() {
@@ -56,7 +44,30 @@ export class AddComponent {
     } else {
       this.taskManagementService.addTask(this.addForm.value as Task);
       this.isDuplicated = this.taskManagementService.getDuplicateStatus();
-      console.log(this.isDuplicated);
+      if(!this.isDuplicated) {
+        this.closeModal();
+      }
     }
+  }
+
+  closeModal() {
+    this.activeModalRef.close();
+  }
+
+  validateForm() {
+    this.addForm = new FormGroup({
+      name: new FormControl(this.task.name, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+      ]),
+      owner: new FormControl(this.task.owner, [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(250),
+        emailValidator(),
+      ]),
+      description: new FormControl(this.task.description, []),
+    });
   }
 }
