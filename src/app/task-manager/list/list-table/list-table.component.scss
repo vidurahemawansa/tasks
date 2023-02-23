@@ -1,0 +1,37 @@
+@import '../../../../styles/abstracts/variables';
+
+.results-list-wrapper {
+    .header-row {
+        display: none;
+
+        @media screen and (min-width: $mobile) {
+            display: flex;
+        }
+    }
+
+    .results-row {
+        &:nth-child(even) {
+            background: #eee;
+            padding: 4px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    .cols {
+        line-height: 28px;
+        display: flex;
+    }
+
+    .label {
+        flex-basis: 100px;
+        align-self: flex-end;
+        text-align: right;
+        margin: 0 12px 0 0;
+        font-weight: 600;
+
+        @media screen and (min-width: $mobile) {
+            display: none;
+        }
+    }
+}

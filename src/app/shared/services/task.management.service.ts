@@ -5,21 +5,28 @@ import { Task } from '../interfaces/task.interface';
   providedIn: 'root'
 })
 export class TaskManagementService {
-  taskList: Array<Object> = [];
   isDuplicated: boolean;
   constructor() { }
 
-  addTask(task: Task) {
+  addTask(task: Task, taskList: Array<Task>) {
     this.isDuplicated = false;
-    if(this.taskList.includes(task)) {
+    if(taskList.includes(task)) {
       this.isDuplicated = true;
     } else {
-      this.taskList.push(task);
-      localStorage.setItem('task list', JSON.stringify(this.taskList));
+      taskList.push(task);
+      localStorage.setItem('task list', JSON.stringify(taskList));
     }
   }
 
   getDuplicateStatus(): boolean {
     return this.isDuplicated;
+  }
+
+  tasksFilter(filterValue: boolean, taskList: Array<Task>) {
+    console.log(filterValue);
+    const result: Array<Task> = taskList.filter((obj) => {
+      return obj.isCompleted === filterValue;
+    });
+    return result;
   }
 }

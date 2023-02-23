@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Task } from '../../shared/interfaces/task.interface';
 import { emailValidator } from '../../shared/directives/email-validator.directive';
@@ -11,6 +11,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent {
+  @Input() tasksList: Array<Task>;
   task: Task;
   addForm: FormGroup;
   isDuplicated: boolean;
@@ -42,7 +43,7 @@ export class AddComponent {
       }
       return;
     } else {
-      this.taskManagementService.addTask(this.addForm.value as Task);
+      this.taskManagementService.addTask(this.addForm.value as Task, this.tasksList);
       this.isDuplicated = this.taskManagementService.getDuplicateStatus();
       if(!this.isDuplicated) {
         this.closeModal();
@@ -68,6 +69,7 @@ export class AddComponent {
         emailValidator(),
       ]),
       description: new FormControl(this.task.description, []),
+      isCompleted: new FormControl(false, []),
     });
   }
 }

@@ -4,3 +4,8 @@ export interface Task {
   description: string;
   isCompleted: boolean;
 }
+
+export interface dropdownFilter {
+  name: string;
+  value?: boolean;
+}

@@ -7,13 +7,15 @@ import { TaskManagerRoutingModule } from './task-manager-routing.module';
 import { TaskManagerComponent } from './task-manager.component';
 import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
+import { ListTableComponent } from './list/list-table/list-table.component';
 
 
 @NgModule({
   declarations: [
     TaskManagerComponent,
     AddComponent,
-    ListComponent
+    ListComponent,
+    ListTableComponent
   ],
   imports: [
     CommonModule,

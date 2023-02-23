@@ -8,4 +8,9 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class TaskManagerComponent {
   constructor(public auth: AuthService) { }
+
+  logout() {
+    localStorage.clear();
+    this.auth.logout();
+  }
 }

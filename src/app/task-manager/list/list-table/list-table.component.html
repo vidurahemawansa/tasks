@@ -1,0 +1,27 @@
+<div class="results-list-wrapper">
+    <div class="row header-row">
+        <div class="col-sm-3 name">Name</div>
+        <div class="col-sm-3 owner">Owner</div>
+        <div class="col-sm-4 desc">Description</div>
+        <div class="col-sm-2 checkbox">Complete</div>
+    </div>
+
+    <div class="row results-row" *ngFor="let task of tasksList; let i = index; trackBy:trackList">
+        <div class="col-sm-3 col-12 cols name">
+            <span class="label">Name:</span>
+            <span class="field">{{task.name}}</span>
+        </div>
+        <div class="col-sm-3 col-12 cols owner ">
+            <span class="label">Owner:</span>
+            <a href="mailto:{{task.owner}}" class="field">{{task.owner}}</a>
+        </div>
+        <div class="col-sm-4 col-12 cols desc">
+            <span class="label">Description:</span>
+            <span class="field">{{task.description}}</span>
+        </div>
+        <div class="col-sm-2 col-12 cols checkbox">
+            <span class="label">Complete:</span>
+            <span class="field"><input type="checkbox" (change)="changeCompletedStatus(task.isCompleted, i)" class="chk"></span>
+        </div>
+    </div>
+</div>
