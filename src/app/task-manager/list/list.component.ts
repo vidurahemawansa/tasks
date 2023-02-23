@@ -22,7 +22,6 @@ export class ListComponent {
   ngOnInit(): void {
     this.setFilterObj();
     this.tasksList = JSON.parse(localStorage.getItem('task list') || '[]');
-    console.log(this.tasksList);
     this.filteredTasksList = this.tasksList;
   }
 
@@ -40,7 +39,6 @@ export class ListComponent {
   }
 
   filterChange(event?: any) {
-    console.log(event.target.value);
     const value = event.target.value;
 
     if (!value || value === "undefined") {

@@ -6,7 +6,7 @@
         <div class="col-sm-2 checkbox">Complete</div>
     </div>
 
-    <div class="row results-row" *ngFor="let task of tasksList; let i = index; trackBy:trackList">
+    <div class="row results-row" *ngFor="let task of tasksList; let i = index">
         <div class="col-sm-3 col-12 cols name">
             <span class="label">Name:</span>
             <span class="field">{{task.name}}</span>

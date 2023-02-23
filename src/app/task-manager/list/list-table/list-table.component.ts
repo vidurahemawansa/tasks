@@ -9,10 +9,6 @@ import { Task } from '../../../shared/interfaces/task.interface';
 export class ListTableComponent {
   @Input() tasksList: Array<Task> | null;
 
-  trackList() {
-    return this.tasksList;
-  }
-
   changeCompletedStatus(isCompleted: boolean, i: number) {
     console.log(i, isCompleted);
   }

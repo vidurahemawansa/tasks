@@ -16,6 +16,10 @@ body{
     }
 
     .btn {
+        font-weight: 600;
+        font-size: 0.85rem;
+        line-height: 40px;
+        padding: 0 16px;
         &:hover {
             opacity: 0.9;
         }

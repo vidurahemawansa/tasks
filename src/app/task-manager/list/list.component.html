@@ -1,13 +1,13 @@
 <div class="list-container">
     <div class="result-container" *ngIf="tasksList && tasksList.length > 0; else noResult">
         <div class="results-header">
-            <h4>Allocated tasks</h4>
+            <input type="input" name="search"/>
             <select name="taskFilter" (change)="filterChange($event)">
                 <option [value]="filter.value" *ngFor="let filter of filterSelectObj">{{filter.name}}</option>
             </select>
         </div>
-
         <app-list-table [tasksList]="filteredTasksList"></app-list-table>
+        <ng-container [ngTemplateOutlet]="addBtn"></ng-container>
     </div>
 
     <ng-template #noResult>
@@ -18,3 +18,10 @@
         </div>
     </ng-template>
 </div>
+
+
+<ng-template #addBtn>
+    <button class="btn btn-primary" 
+    (click)="openAddModal()" 
+    [innerText]="filteredTasksList.length > 0 ? 'Add another task' : 'Add tasks'"></button>
+</ng-template>

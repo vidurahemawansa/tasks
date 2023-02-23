@@ -6,21 +6,33 @@
 
         @media screen and (min-width: $mobile) {
             display: flex;
+            line-height: 40px;
+            font-weight: 600;
         }
     }
 
     .results-row {
+        padding: 8px 0;
         &:nth-child(even) {
             background: #eee;
-            padding: 4px 0;
             border-top: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
         }
     }
 
     .cols {
-        line-height: 28px;
         display: flex;
+        &.checkbox {
+            .field {
+                display: inline-flex;
+                margin: 1px 0 0 4px;
+            }
+            input {
+                width: 16px;
+                height: 16px;
+                cursor: pointer;
+            }
+        }
     }
 
     .label {
