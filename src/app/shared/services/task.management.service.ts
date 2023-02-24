@@ -23,7 +23,6 @@ export class TaskManagementService {
   }
 
   tasksFilter(filterValue: boolean, taskList: Array<Task>) {
-    console.log(filterValue);
     const result: Array<Task> = taskList.filter((obj) => {
       return obj.isCompleted === filterValue;
     });

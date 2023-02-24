@@ -10,9 +10,13 @@ export class ListTableComponent {
   @Input() tasksList: Array<Task>;
   @Input() searchTerm: string;
   filterMetadata = { count: 0 };
+  initialTaskList: Array<Task>;
     
-
+  ngOnInit() {
+    this.initialTaskList = this.tasksList;
+  }
   changeCompletedStatus(isCompleted: boolean, i: number) {
-    console.log(i, isCompleted);
+    this.initialTaskList[i].isCompleted = !isCompleted;
+    localStorage.setItem('task list', JSON.stringify(this.initialTaskList));
   }
 }

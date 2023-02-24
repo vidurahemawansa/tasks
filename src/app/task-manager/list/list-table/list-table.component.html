@@ -21,8 +21,11 @@
         </div>
         <div class="col-sm-2 col-12 cols checkbox">
             <span class="label">Complete:</span>
-            <span class="field"><input type="checkbox" (change)="changeCompletedStatus(task.isCompleted, i)" class="chk"></span>
+            <span class="field">
+                <input type="checkbox" [checked]="task.isCompleted" (change)="changeCompletedStatus(task.isCompleted, i)" class="chk">
+            </span>
         </div>
     </div>
-    <div>{{filterMetadata.count}} tasks found.</div>
 </div>
+
+<div class="results-counter">{{filterMetadata.count}} tasks found.</div>
