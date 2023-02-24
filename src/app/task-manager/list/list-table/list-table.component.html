@@ -6,7 +6,7 @@
         <div class="col-sm-2 checkbox">Complete</div>
     </div>
 
-    <div class="row results-row" *ngFor="let task of tasksList; let i = index">
+    <div class="row results-row" *ngFor="let task of tasksList | filter:searchTerm:filterMetadata; let i = index">
         <div class="col-sm-3 col-12 cols name">
             <span class="label">Name:</span>
             <span class="field">{{task.name}}</span>
@@ -24,4 +24,5 @@
             <span class="field"><input type="checkbox" (change)="changeCompletedStatus(task.isCompleted, i)" class="chk"></span>
         </div>
     </div>
+    <div>{{filterMetadata.count}} tasks found.</div>
 </div>

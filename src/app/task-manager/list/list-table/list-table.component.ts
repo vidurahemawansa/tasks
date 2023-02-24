@@ -7,7 +7,10 @@ import { Task } from '../../../shared/interfaces/task.interface';
   styleUrls: ['./list-table.component.scss']
 })
 export class ListTableComponent {
-  @Input() tasksList: Array<Task> | null;
+  @Input() tasksList: Array<Task>;
+  @Input() searchTerm: string;
+  filterMetadata = { count: 0 };
+    
 
   changeCompletedStatus(isCompleted: boolean, i: number) {
     console.log(i, isCompleted);

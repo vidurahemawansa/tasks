@@ -13,6 +13,7 @@ export class ListComponent {
   tasksList: Array<Task>;
   filteredTasksList: Array<Task>;
   filterSelectObj: Array<dropdownFilter>;
+  searchTerm: string;
 
   constructor(
     private modalService: NgbModal,

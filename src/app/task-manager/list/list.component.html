@@ -1,12 +1,15 @@
 <div class="list-container">
     <div class="result-container" *ngIf="tasksList && tasksList.length > 0; else noResult">
         <div class="results-header">
-            <input type="input" name="search"/>
+            <input class="form-control" 
+            type="text" 
+            name="search" 
+            [(ngModel)]="searchTerm" autocomplete="off" placeholder="Search by name"/>
             <select name="taskFilter" (change)="filterChange($event)">
                 <option [value]="filter.value" *ngFor="let filter of filterSelectObj">{{filter.name}}</option>
             </select>
         </div>
-        <app-list-table [tasksList]="filteredTasksList"></app-list-table>
+        <app-list-table [tasksList]="filteredTasksList" [searchTerm]="searchTerm"></app-list-table>
         <ng-container [ngTemplateOutlet]="addBtn"></ng-container>
     </div>
 

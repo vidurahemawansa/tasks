@@ -24,21 +24,18 @@
         .results-header {
             display: flex;
             justify-content: space-between;
-            margin: 0;
+            margin: 0 -12px 12px;
+            background: $secondary-bg-color;
+            padding: 4px 12px;
 
-            h4 {
-                color: #888;
-                font-weight: 600;
-                font-size: 0.9rem;
-                margin: 0;
-                line-height: 36px;
-            }
-
-            select {
-                height: 36px;
+            input, select {
+                max-width: 200px;
                 border: none;
-                border-bottom: 1px solid;
+                border-radius: 6px;
                 color: #444;
+                font-size: 0.8rem;
+                height: 36px;
+                padding: 0 8px;
             }
         }
     }
