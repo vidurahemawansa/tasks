@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../interfaces/task.interface';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,12 @@ export class TaskManagementService {
 
   addTask(task: Task, taskList: Array<Task>) {
     this.isDuplicated = false;
-    if(taskList.includes(task)) {
-      this.isDuplicated = true;
-    } else {
+    let isAvailable = _.find(taskList, ['name', task.name]);
+    if(!isAvailable) {
       taskList.push(task);
       localStorage.setItem('task list', JSON.stringify(taskList));
+    } else {
+      this.isDuplicated = true;
     }
   }
 
