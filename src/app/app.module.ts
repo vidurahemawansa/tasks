@@ -19,7 +19,7 @@ import { LoginComponent } from './login/login.component';
       domain: 'dev-clqpfsy6d6v8qggc.uk.auth0.com',
       clientId: '7iOePlIvkLSV1aloR4XZRFJm8zArj1ZR',
       authorizationParams: {
-        redirect_uri: 'http://localhost:4200/task-manager'
+        redirect_uri: window.location.origin + '/task-manager'
       }
     }),
   ],
