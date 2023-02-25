@@ -15,20 +15,21 @@ export class LoginComponent {
     private router: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.checkAuthStatus();
   }
 
-  checkAuthStatus() {
+  checkAuthStatus(): void {
     this.auth.isAuthenticated$.subscribe({
       next: (isAuthenticated) => {
         this.isAuthenticated = isAuthenticated;
-        this.router.navigate(['/task-manager']);
+        const redirectionPath = this.isAuthenticated ? '/task-manager' : '/';
+        this.router.navigate([redirectionPath]);
       },
       error: (msg) => {
-        console.error('Cannot authenticate')
+        console.error(msg)
       }
-    })
+    });
   }
 
 }
