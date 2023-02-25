@@ -47,6 +47,6 @@
     "typescript": "~4.9.4"
   },
   "heroku-postbuild": "ng build — prod",
-  "engines": { "node": "v18.14.1", "npm": "9.5.0" },
+  "engines": { "node": "18.14.1", "npm": "9.5.0" },
   "start" : "node server.js"
 }
