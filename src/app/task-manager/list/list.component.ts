@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddComponent } from '../add/add.component';
 import { dropdownFilter, Task } from '../../shared/interfaces/task.interface';
 import { TaskManagementService } from '../../shared/services/task.management.service';
+import { taskName } from '../../shared/task.enums';
 
 @Component({
   selector: 'app-list',
@@ -22,7 +23,7 @@ export class ListComponent {
 
   ngOnInit(): void {
     this.setFilterObj();
-    this.tasksList = JSON.parse(localStorage.getItem('task list') || '[]');
+    this.tasksList = JSON.parse(localStorage.getItem(taskName.TASK_LIST) || '[]');
     this.filteredTasksList = this.tasksList;
   }
 
