@@ -28,4 +28,4 @@
     </div>
 </div>
 
-<div class="results-counter">{{filterMetadata.count}} tasks found.</div>
+<div class="results-counter">{{searchTerm && searchTerm !== null ? filterMetadata.count : tasksList.length}} tasks found.</div>
