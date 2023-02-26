@@ -17,7 +17,7 @@
         <div class="empty-result-container">
             <fa-icon [icon]="['fas','circle-info']"></fa-icon>
             <p>There are no allocated tasks for the user.</p>
-            <button class="btn btn-primary" (click)="openAddModal()">Add tasks</button>
+            <ng-container [ngTemplateOutlet]="addBtn"></ng-container>
         </div>
     </ng-template>
 </div>
