@@ -25,7 +25,8 @@ import { FilterPipe } from '../shared/pipes/filter.pipe';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule
-  ]
+  ],
+  exports: [FilterPipe]
 })
 export class TaskManagerModule {
 }
