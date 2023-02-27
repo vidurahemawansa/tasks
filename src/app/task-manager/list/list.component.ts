@@ -4,6 +4,7 @@ import { AddComponent } from '../add/add.component';
 import { dropdownFilter, Task } from '../../shared/interfaces/task.interface';
 import { TaskManagementService } from '../../shared/services/task.management.service';
 import { taskName } from '../../shared/task.enums';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -15,6 +16,7 @@ export class ListComponent {
   filteredTasksList: Array<Task>;
   filterSelectObj: Array<dropdownFilter>;
   searchTerm: string;
+  data: Subscription;
 
   constructor(
     private modalService: NgbModal,
@@ -22,9 +24,11 @@ export class ListComponent {
   ) { }
 
   ngOnInit(): void {
-    this.setFilterObj();
-    this.tasksList = JSON.parse(localStorage.getItem(taskName.TASK_LIST) || '[]');
-    this.filteredTasksList = this.tasksList;
+    this.tasksList = this.taskManagementService.getTasksList();
+    this.filterChange();
+    this.data = this.taskManagementService.data$.subscribe((tasks) => {
+      this.resetFilters(tasks);
+    });
   }
 
   openAddModal() {
@@ -41,12 +45,23 @@ export class ListComponent {
   }
 
   filterChange(event?: any) {
-    const value = event.target.value;
+    const value = event?.target?.value;
 
     if (!value || value === "undefined") {
       this.filteredTasksList = this.tasksList;
     } else {
       this.filteredTasksList = this.taskManagementService.tasksFilter(JSON.parse(value), this.tasksList);
     }
+  }
+
+  resetFilters(tasks) :void {
+    this.tasksList = tasks;
+    this.filteredTasksList = tasks;
+    this.setFilterObj();
+    this.searchTerm = '';
+  }
+
+  ngOnDestroy(): void {
+    this.data.unsubscribe();
   }
 }

@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Task } from '../interfaces/task.interface';
 import { taskName } from '../task.enums';
 import * as _ from 'lodash';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskManagementService {
   isDuplicated: boolean;
-  taskList: Array<Task>;
+  data$ = new BehaviorSubject([{}]);
   constructor() { }
 
   addTask(task: Task, taskList: Array<Task>) {
@@ -16,7 +17,7 @@ export class TaskManagementService {
     let isAvailable = _.find(taskList, ['name', task.name]);
     if(!isAvailable) {
       taskList.push(task);
-      this.taskList = taskList;
+      this.data$.next(taskList);
       this.setTasksListToLocal(taskList);
     } else {
       this.isDuplicated = true;
@@ -28,7 +29,9 @@ export class TaskManagementService {
   }
 
   getTasksList(): Array<Task> {
-    return this.taskList;
+    const taskList = JSON.parse(localStorage.getItem(taskName.TASK_LIST) || '[]');
+    this.data$.next(taskList);
+    return taskList;
   }
 
   tasksFilter(filterValue: boolean, taskList: Array<Task>) {
